@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsible TOC</title>
+    <style>
+        /* TOC Container */
+        #toc-container {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        #toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* TOC Items */
+        .toc-item {
+            cursor: pointer;
+            font-weight: bold;
+            padding: 8px;
+            background: #e3e3e3;
+            margin-top: 5px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .toc-item:hover {
+            background: #d1d1d1;
+        }
+
+        /* Hide sections by default */
+        .content-section {
+            display: none;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 3px solid #007bff;
+            background: #f0f8ff;
+        }
+
+        /* Active class to show content */
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Table of Contents -->
+    <div id="toc-container">
+        <h3>Table of Contents</h3>
+        <ul id="toc"></ul>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content">
+        <h2>Why Your Heart’s Desires Matter, Beyond Copy-Paste Formulas</h2>
+        <div class="content-section">
+            <p>When we talk about “heart’s desires,” we’re referring to...</p>
+        </div>
+
+        <h2>Intrinsic vs. Extrinsic Motivation</h2>
+        <div class="content-section">
+            <h3>Intrinsic Motivation</h3>
+            <div class="content-section">
+                <p>Comes from within, sparked by your unique passions...</p>
+            </div>
+
+            <h3>Extrinsic Motivation</h3>
+            <div class="content-section">
+                <p>Driven by external rewards like money, praise, or status...</p>
+            </div>
+        </div>
+
+        <h2>AI, Creativity, and Your Human Spark</h2>
+        <div class="content-section">
+            <p>Yes, AI can crank out tons of content at warp speed...</p>
+        </div>
+
+        <h2>A New Era of Human Potential</h2>
+        <div class="content-section">
+            <p>Yes, AI is evolving at lightning speed...</p>
+        </div>
+
+        <h2>You, Unleashed</h2>
+        <div class="content-section">
+            <p>Maybe you’re tired of playing by the usual rules...</p>
+        </div>
+
+        <h2>From ‘Should’ to ‘Want’: A Full-Body Conviction</h2>
+        <div class="content-section">
+            <p>“Should” is heavy, it’s laced with guilt or obligation...</p>
+        </div>
+
+        <h2>Practical Check-In: What Do I Truly Desire?</h2>
+        <div class="content-section">
+            <h3>Honesty Break</h3>
+            <div class="content-section">
+                <p>“Am I operating from scarcity...</p>
+            </div>
+
+            <h3>Visioning Exercise</h3>
+            <div class="content-section">
+                <p>Close your eyes and imagine your ideal scenario...</p>
+            </div>
+
+            <h3>Action Aligned with Essence</h3>
+            <div class="content-section">
+                <p>Write down one next step...</p>
+            </div>
+        </div>
+
+        <h2>You Are Your Own Best Guide</h2>
+        <div class="content-section">
+            <p>No matter how many online courses, coaching programs...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toc = document.getElementById("toc");
+            const headings = document.querySelectorAll("#content h2, #content h3");
+            const sections = document.querySelectorAll(".content-section");
+
+            headings.forEach((heading, index) => {
+                let id = `section-${index}`;
+                heading.id = id;
+
+                // Create TOC item
+                let listItem = document.createElement("li");
+                listItem.classList.add("toc-item");
+                listItem.textContent = heading.textContent;
+                
+                // Click to toggle content section
+                listItem.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    let section = sections[index];
+                    section.classList.toggle("active");
+                });
+
+                toc.appendChild(listItem);
+            });
+        });
+    </script>
+
+</body>
+</html>
